@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
 
     bool jump = false;
+    bool Moving = false;
 
     int Touches()
     {
@@ -46,11 +47,21 @@ public class PlayerMovement : MonoBehaviour
     {
         Touches();
 
+        if (Input.GetAxisRaw("Horizontal") != 0f)
+        {
+            //Moving = true;
+            animator.SetBool("Moving", true);
+        }
+        else
+        {
+            //Moving = false;
+            animator.SetBool("Moving", false);
+        }
+
         horizontalMove = Input.GetAxisRaw("Horizontal") + Touches();
         if (horizontalMove < -1) horizontalMove = -1;
         else if (horizontalMove > 1) horizontalMove = 1;
         horizontalMove *= runSpeed;
-
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
