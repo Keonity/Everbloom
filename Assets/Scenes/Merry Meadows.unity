@@ -2318,7 +2318,12 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 30505576}
-    m_RemovedComponents: []
+    - target: {fileID: 6289099645593735599, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: fddd9f41d03247b488c4a37c07efbbd2, type: 2}
+    m_RemovedComponents:
+    - {fileID: 8345278067400716693, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
 --- !u!1 &558053092
 GameObject:

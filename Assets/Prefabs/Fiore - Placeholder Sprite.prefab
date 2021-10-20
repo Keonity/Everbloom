@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 4568704448769124683}
   - component: {fileID: 4568704448769124682}
   - component: {fileID: 8345278067400716693}
+  - component: {fileID: 6289099645593735599}
   m_Layer: 0
   m_Name: Fiore - Placeholder Sprite
   m_TagString: Player
@@ -157,7 +158,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4568704448769124673}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fddd9f41d03247b488c4a37c07efbbd2, type: 2}
   m_IsTrigger: 0
@@ -356,3 +357,31 @@ PolygonCollider2D:
       - {x: 0.3134475, y: 0.87535644}
       - {x: 0.37527925, y: 0.87482595}
       - {x: 0.37596524, y: 0.98156166}
+--- !u!68 &6289099645593735599
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4568704448769124673}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.31013423, y: 1.1196356}
+  - {x: 0.005060911, y: 1.1250007}
+  - {x: -0.05898577, y: 1.0600722}
+  - {x: -0.14988667, y: 0.66447675}
+  - {x: -0.43224967, y: -0.74582005}
+  - {x: 0.3684957, y: -0.74451435}
+  - {x: 0.37403807, y: 1.0567114}
+  - {x: 0.31612575, y: 1.1192261}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
