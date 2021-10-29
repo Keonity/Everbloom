@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool Moving = false;
 
-    int Touches()
+    /*int Touches()
     {
         int touchAxis = 0;
         foreach(Touch touch in Input.touches)
@@ -40,14 +40,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return touchAxis;
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
     {
-        Touches();
+        //Touches();
 
-        if (Input.GetAxisRaw("Horizontal") != 0f)
+        if (SimpleInput.GetAxisRaw("Horizontal") != 0f)
         {
             //Moving = true;
             animator.SetBool("Moving", true);
@@ -58,14 +58,14 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Moving", false);
         }
 
-        horizontalMove = Input.GetAxisRaw("Horizontal") + Touches();
+        horizontalMove = SimpleInput.GetAxisRaw("Horizontal"); // + Touches();
         if (horizontalMove < -1) horizontalMove = -1;
         else if (horizontalMove > 1) horizontalMove = 1;
         horizontalMove *= runSpeed;
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (SimpleInput.GetKeyDown(KeyCode.Space) || SimpleInput.GetAxisRaw("Vertical") > 0f)
         {
             jump = true;
         }
