@@ -10,6 +10,8 @@ public class CameraFollow : MonoBehaviour
 
     public GameObject cameraLeftBorder;
     public GameObject cameraRightBorder;
+    public GameObject cameraUpBorder;
+    public GameObject cameraDownBorder;
 
     private float cameraHalfWidth;
 
@@ -30,11 +32,13 @@ public class CameraFollow : MonoBehaviour
     {
         float borderLeft = cameraLeftBorder.transform.position.x + cameraHalfWidth;
         float borderRight = cameraRightBorder.transform.position.x - cameraHalfWidth;
+        float borderDown = cameraDownBorder.transform.position.y + cameraHalfWidth;
+        float borderUp = cameraUpBorder.transform.position.y - cameraHalfWidth;
 
         smoothPos = Vector3.Lerp(this.transform.position,
             new Vector3(Mathf.Clamp(followTransform.position.x, borderLeft, borderRight),
-            this.transform.position.y,
-            this.transform.position.z), smoothSpeed);
+           Mathf.Clamp(followTransform.position.y, 0f, 4.7f),
+            this.transform.position.z), smoothSpeed); ;
 
         this.transform.position = smoothPos;
     }
