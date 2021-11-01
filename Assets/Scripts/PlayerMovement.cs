@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (SimpleInput.GetKeyDown(KeyCode.Space) || SimpleInput.GetAxisRaw("Vertical") > 0f)
+        if (SimpleInput.GetAxisRaw("Vertical") > 0f)
         {
             jump = true;
         }
