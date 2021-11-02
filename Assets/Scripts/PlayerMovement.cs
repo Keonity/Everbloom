@@ -9,44 +9,37 @@ public class PlayerMovement : MonoBehaviour
 
     public float runSpeed = 40f;
 
-    float horizontalMove = 0f;
 
-    bool jump = false;
-    bool Moving = false;
+    private float horizontalMove = 0f;
+    private bool jump = false;
+    //bool Moving = false;
+    private float dash = 0f;
+    private List<int> touchIDs = new List<int>();
 
-    /*int Touches()
+
+    void SpecialMoves()
     {
-        int touchAxis = 0;
         foreach(Touch touch in Input.touches)
         {
-            Vector2 touchPos = touch.position - new Vector2(Camera.main.transform.position.x, Camera.main.transform.position.y);
-            float ratio = touchPos.x / (float)Camera.main.scaledPixelWidth;
-            if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary)
+            // DASH: Gets the horizontal direction of swipes.
+            if (touch.phase == TouchPhase.Moved && !touchIDs.Contains(touch.fingerId) && dash == 0f)
             {
-                if (ratio <= 0.33)
-                {
-                    touchAxis--;
-                }
-                else if (ratio >= 0.66)
-                {
-                    touchAxis++;
-                }
-                else if (touch.phase == TouchPhase.Began)
-                {
-                    jump = true;
-                }
-
+                touchIDs.Add(touch.fingerId);
+                dash = (touch.deltaPosition.x > 0) ? 1f : -1f;
+            }
+            if (touch.phase == TouchPhase.Ended && touchIDs.Contains(touch.fingerId))
+            {
+                touchIDs.Remove(touch.fingerId);
             }
         }
 
-        return touchAxis;
-    }*/
+    }
 
     // Update is called once per frame
     void Update()
     {
-        //Touches();
-
+        SpecialMoves();
+        
         if (SimpleInput.GetAxisRaw("Horizontal") != 0f)
         {
             //Moving = true;
@@ -65,16 +58,19 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (SimpleInput.GetAxisRaw("Vertical") > 0f && jump==false)
-        {
-            jump = true;
-        }
     }
 
     void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+
+        if (SimpleInput.GetAxisRaw("Vertical") > 0f && jump == false)
+        {
+            jump = true;
+        }
+
+        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump, dash);
         //Camera.main.transform.position = new Vector3(controller.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
         jump = false;
+        dash = 0f;
     }
 }

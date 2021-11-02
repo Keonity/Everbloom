@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        if (results[0].gameObject.name == "Attack")
+        if (results.Count > 0 && results[0].gameObject.name == "Attack")
         {
             animator.SetTrigger("Attack");
             waitAttack();
