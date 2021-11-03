@@ -139,10 +139,11 @@ public class CharacterController2D : MonoBehaviour
 			dashing = true;
 			Vector2 dashVelocity;
 			if (m_FacingRight)
-            {
+			{
 				dashVelocity = new Vector2(m_DashForce + move * 10f, m_Rigidbody2D.velocity.y);
 			}
-			else (!m_FacingRight)
+
+			else
             {
 				dashVelocity = new Vector2(m_DashForce + move * -10f, m_Rigidbody2D.velocity.y);
 			}
