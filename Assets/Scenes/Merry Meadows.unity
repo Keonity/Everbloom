@@ -2907,7 +2907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4568704448769124676, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
       propertyPath: m_JumpForce
-      value: 200
+      value: 225
       objectReference: {fileID: 0}
     - target: {fileID: 4568704448769124677, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
       propertyPath: m_AngularDrag
