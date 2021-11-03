@@ -19,8 +19,8 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
-	private bool jumping = false;
-	private bool dashing = false;
+	//private bool jumping = false;
+	//private bool dashing = false;
 
 	[Header("Events")]
 	[Space]
@@ -134,10 +134,13 @@ public class CharacterController2D : MonoBehaviour
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
 
-		if(dash != 0f)
-        {
-			dashing = true;
-			m_Rigidbody2D.AddForce(new Vector2(m_DashForce * dash, 0f));
+		if (dash != 0f)
+		{
+			//dashing = true;
+			Vector2 dashVelocity;
+			dashVelocity = new Vector2(m_DashForce * dash, m_Rigidbody2D.velocity.x);
+			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, dashVelocity, ref m_Velocity, m_MovementSmoothing);
+			//m_Rigidbody2D.AddForce(new Vector2(m_DashForce * dash, 0f));
 
 		}
 	}
