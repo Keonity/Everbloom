@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
 {
 
     public Animator animator;
+    public SoundControl soundcontroller;
 
     IEnumerator waitAttack()
     {
@@ -21,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         if (results.Count > 0 && results[0].gameObject.name == "Attack")
         {
-            animator.SetTrigger("Attack");
+            animator.SetTrigger("Attack");  
             waitAttack();
             animator.SetTrigger("Attack");
         }

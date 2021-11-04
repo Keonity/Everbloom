@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
     public Animator animator;
-
+    public SoundControl soundmanager;
     public float runSpeed = 40f;
 
 

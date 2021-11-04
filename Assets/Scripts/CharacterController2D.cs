@@ -19,6 +19,8 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
+	public AudioSource src;
+	public SoundControl soundcontroller;
 	//private bool jumping = false;
 	//private bool dashing = false;
 
@@ -33,8 +35,10 @@ public class CharacterController2D : MonoBehaviour
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
+	
 	private void Awake()
 	{
+		soundcontroller.assignClips();
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
 		if (OnLandEvent == null)
@@ -61,6 +65,7 @@ public class CharacterController2D : MonoBehaviour
 					OnLandEvent.Invoke();
 			}
 		}
+		
 	}
 
 
@@ -125,6 +130,34 @@ public class CharacterController2D : MonoBehaviour
 				// ... flip the player.
 				Flip();
 			}
+			/*if (move > 0 | move < 0)
+			{
+				if (!src.isPlaying)
+				{
+					src.Play();
+				}
+			}
+			else
+			{
+				src.Stop();
+			}*/
+			if (move > 0 | move < 0)
+			{
+				if (!soundcontroller.myAudioSource1.isPlaying)
+				{
+					soundcontroller.PlaySound1();
+				}
+			}
+			else
+			{
+				soundcontroller.StopSound1();
+			}
+			if (!m_Grounded)
+			{
+				soundcontroller.StopSound1();
+			}
+		
+
 		}
 		// If the player should jump...
 		if (m_Grounded && jump)
