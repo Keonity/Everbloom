@@ -35,15 +35,23 @@ public class SlimeController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        enemyRB.drag = 200f;
-        enemyRB.mass = 200f;
+        if (collision.gameObject.name == "Fiore - Placeholder Sprite")
+        {
+            enemyRB.drag = 200f;
+            enemyRB.mass = 200f;
+        }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        enemyRB.velocity = new Vector2(0, 0);
-        enemyRB.drag = 0f;
-        enemyRB.mass = 1f;
+        if (collision.gameObject.name == "Fiore - Placeholder Sprite")
+        {
+            enemyRB.velocity = new Vector2(0, 0);
+            enemyRB.drag = 0f;
+            enemyRB.mass = 1f;
+        }
+
     }
 
     // Start is called before the first frame update
