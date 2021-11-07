@@ -33,6 +33,19 @@ public class SlimeController : MonoBehaviour
     private Rigidbody2D enemyRB;
     private Animator enemyAnimator;
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        enemyRB.drag = 200f;
+        enemyRB.mass = 200f;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        enemyRB.velocity = new Vector2(0, 0);
+        enemyRB.drag = 0f;
+        enemyRB.mass = 1f;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

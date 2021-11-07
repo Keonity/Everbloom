@@ -31,6 +31,19 @@ public class WolfController : MonoBehaviour
     private Rigidbody2D enemyRB;
     private Animator enemyAnimator;
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        enemyRB.drag = 200f;
+        enemyRB.mass = 200f;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        enemyRB.velocity = new Vector2(0,0);
+        enemyRB.drag = 0f;
+        enemyRB.mass = 1f;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +70,7 @@ public class WolfController : MonoBehaviour
         else if (canSeePlayer && chargeTimer <= 0)
         {
             chargeTimer = chargeCD;
-            Debug.Log("Jump attack");
+            //Debug.Log("Jump attack");
             FlipTowardsPlayer();
             JumpAttack();
         }
@@ -90,16 +103,24 @@ public class WolfController : MonoBehaviour
             }
         }
 
-        enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
+        //enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
     }
 
     void JumpAttack()
     {
         float distanceFromPlayer = player.position.x - transform.position.x;
+
         if (distanceFromPlayer < 5f || distanceFromPlayer > -5f)
         {
+            Debug.Log("Jump Attack");
             enemyRB.AddForce(new Vector2(distanceFromPlayer + 3f, 0), ForceMode2D.Impulse);
 
+        }
+
+        else if (distanceFromPlayer < 10f || distanceFromPlayer > -10f)
+        {
+            Debug.Log("Moving");
+            enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
         }
     }
 
