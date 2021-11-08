@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Math;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public SoundControl soundmanager;
     public float runSpeed = 40f;
+    public float swipeSensitivity = 30;
 
 
     private float horizontalMove = 0f;
@@ -30,10 +32,10 @@ public class PlayerMovement : MonoBehaviour
             foreach (Touch touch in Input.touches)
             {
                 // DASH: Gets the horizontal direction of swipes.
-                if (touch.phase == TouchPhase.Moved && !touchIDs.Contains(touch.fingerId) && dash == 0f)
+                if ((touch.phase == TouchPhase.Moved) && !touchIDs.Contains(touch.fingerId) && (System.Math.Abs(touch.deltaPosition.x) > swipeSensitivity) && (dash == 0f))
                 {
                     touchIDs.Add(touch.fingerId);
-                    dash = (touch.deltaPosition.x > 0) ? 1f : -1f;
+                    dash = touch.deltaPosition.x / System.Math.Abs(touch.deltaPosition.x);
                 }
                 if (touch.phase == TouchPhase.Ended && touchIDs.Contains(touch.fingerId))
                 {
