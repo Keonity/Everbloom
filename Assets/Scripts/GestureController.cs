@@ -6,12 +6,18 @@ using UnityEngine.EventSystems;
 public class GestureController : MonoBehaviour
 {
     public float swipeSensitivity = 30;
+    public float blastCharge = 1f;
 
-    private PlayerMovement player;
+    private PlayerMovement playerMove;
+    private PlayerAttack playerAttk;
     private List<int> touchIDs = new List<int>();
+    private float blastTimer = 0f;
+    private bool blastCheck = false;
 
     void SpecialMoves()
     {
+        blastCheck = false;
+
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         List<RaycastResult> results = new List<RaycastResult>();
@@ -25,29 +31,38 @@ public class GestureController : MonoBehaviour
                 if ((touch.phase == TouchPhase.Moved) && !touchIDs.Contains(touch.fingerId) && (System.Math.Abs(touch.deltaPosition.x) > swipeSensitivity))
                 {
                     touchIDs.Add(touch.fingerId);
-                    player.Dash(touch.deltaPosition.x);
+                    playerMove.Dash(touch.deltaPosition.x);
                 }
                 if (touch.phase == TouchPhase.Ended && touchIDs.Contains(touch.fingerId))
                 {
                     touchIDs.Remove(touch.fingerId);
                 }
 
-                // BLAST: 
-                /*
-                if (touch.phase == TouchPhase.Stationary)
+                // BLAST: Checks for "tap and hold" fingers.
+                bool deadzone = (touch.phase == TouchPhase.Moved)
+                    && (System.Math.Abs(touch.deltaPosition.x) <= swipeSensitivity)
+                    && (System.Math.Abs(touch.deltaPosition.y) <= swipeSensitivity);
+                if ((touch.phase == TouchPhase.Stationary || deadzone) && !touchIDs.Contains(touch.fingerId))
                 {
-                    Debug.Log(touch.deltaTime);
+                    //Debug.Log(touch.deltaTime);
+                    blastCheck = true;
+                    blastTimer -= Time.fixedDeltaTime;
+                    if (blastTimer <= 0f)
+                    {
+                        playerAttk.Blast(touch.position);
+                    }
                 }
-                */
             }
         }
 
+        if (!blastCheck) blastTimer = blastCharge;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        player = gameObject.GetComponent<PlayerMovement>();
+        playerMove = gameObject.GetComponent<PlayerMovement>();
+        playerAttk = gameObject.GetComponent<PlayerAttack>();
     }
 
     // Update is called once per frame

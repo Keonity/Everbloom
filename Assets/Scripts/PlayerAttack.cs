@@ -31,6 +31,12 @@ public class PlayerAttack : MonoBehaviour
         return results.Count > 0;
     }
 
+    public void Blast(Vector2 pos)
+    {
+        //Placeholder!
+        Debug.Log(pos);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
