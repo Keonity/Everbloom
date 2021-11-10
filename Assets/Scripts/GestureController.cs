@@ -31,6 +31,14 @@ public class GestureController : MonoBehaviour
                 {
                     touchIDs.Remove(touch.fingerId);
                 }
+
+                // BLAST: 
+                /*
+                if (touch.phase == TouchPhase.Stationary)
+                {
+                    Debug.Log(touch.deltaTime);
+                }
+                */
             }
         }
 
