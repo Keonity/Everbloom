@@ -5,9 +5,9 @@ using UnityEngine.EventSystems;
 
 public class GestureController : MonoBehaviour
 {
-    public PlayerMovement player;
     public float swipeSensitivity = 30;
 
+    private PlayerMovement player;
     private List<int> touchIDs = new List<int>();
 
     void SpecialMoves()
@@ -39,7 +39,7 @@ public class GestureController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = gameObject.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
