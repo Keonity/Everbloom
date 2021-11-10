@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public GameObject hitBox;
 
     public Animator animator;
     public SoundControl soundcontroller;
@@ -22,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         if (results.Count > 0 && results[0].gameObject.name == "Attack")
         {
-            animator.SetTrigger("Attack");  
+            animator.SetTrigger("Attack");
             waitAttack();
             animator.SetTrigger("Attack");
         }
@@ -72,6 +73,21 @@ public class PlayerAttack : MonoBehaviour
             if (touch.phase == TouchPhase.Began)
             {
                 IsPointerOverUIObject();
+                /*foreach (Transform child in this.transform)
+                {
+                    if (child.gameObject.name == "playerHitBox")
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }*/
+                waitAttack();
+                /*foreach (Transform child in this.transform)
+                {
+                    if (child.gameObject.name == "playerHitBox")
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                }*/
             }
         }
     }
