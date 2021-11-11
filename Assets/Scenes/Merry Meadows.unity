@@ -7039,9 +7039,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8288c50ee12c0f49b038dd38e50c776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blastSpeed: 20
   hitBox: {fileID: 132163338}
   animator: {fileID: 1327401005}
   soundcontroller: {fileID: 0}
+  blastPrefab: {fileID: 7917671334592480064, guid: 4f7b03adfe8a6d34fa8533f5dd54e801, type: 3}
 --- !u!114 &682998180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7265,6 +7267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swipeSensitivity: 30
+  blastCharge: 5
 --- !u!1 &688181635
 GameObject:
   m_ObjectHideFlags: 0
@@ -7442,9 +7445,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8288c50ee12c0f49b038dd38e50c776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blastSpeed: 100
   hitBox: {fileID: 0}
   animator: {fileID: 0}
   soundcontroller: {fileID: 0}
+  blastPrefab: {fileID: 0}
 --- !u!58 &776305453
 CircleCollider2D:
   m_ObjectHideFlags: 0

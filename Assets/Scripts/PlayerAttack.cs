@@ -5,10 +5,14 @@ using UnityEngine.EventSystems;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public float blastSpeed = 10f;
+    
     public GameObject hitBox;
 
     public Animator animator;
     public SoundControl soundcontroller;
+
+    public Rigidbody2D blastPrefab;
 
     IEnumerator waitAttack()
     {
@@ -33,8 +37,13 @@ public class PlayerAttack : MonoBehaviour
 
     public void Blast(Vector2 pos)
     {
-        //Placeholder!
-        Debug.Log(pos);
+        Vector3 playerPix = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 dir = (pos - new Vector2(playerPix.x, playerPix.y)).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        //Debug.Log(string.Format("{0} {1}", pos.ToString(), playerPix.ToString()));
+        //Debug.DrawLine(transform.position, pos + dir * 10, Color.red, Mathf.Infinity);
+        Rigidbody2D blast = GameObject.Instantiate(blastPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, angle)));
+        blast.GetComponent<Rigidbody2D>().velocity = dir * blastSpeed;
     }
 
     // Start is called before the first frame update

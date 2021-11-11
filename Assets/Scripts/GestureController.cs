@@ -6,13 +6,14 @@ using UnityEngine.EventSystems;
 public class GestureController : MonoBehaviour
 {
     public float swipeSensitivity = 30;
-    public float blastCharge = 1f;
+    public float blastCharge = 5f;
 
     private PlayerMovement playerMove;
     private PlayerAttack playerAttk;
     private List<int> touchIDs = new List<int>();
     private float blastTimer = 0f;
     private bool blastCheck = false;
+    private bool blastReset = false;
 
     void SpecialMoves()
     {
@@ -47,15 +48,21 @@ public class GestureController : MonoBehaviour
                     //Debug.Log(touch.deltaTime);
                     blastCheck = true;
                     blastTimer -= Time.fixedDeltaTime;
-                    if (blastTimer <= 0f)
+                    if (blastTimer <= 0f && !blastReset)
                     {
                         playerAttk.Blast(touch.position);
+                        blastReset = true;
+                        //blastCheck = false;
                     }
                 }
             }
         }
 
-        if (!blastCheck) blastTimer = blastCharge;
+        if (!blastCheck)
+        {
+            blastTimer = blastCharge;
+            blastReset = false;
+        }
     }
 
     // Start is called before the first frame update
