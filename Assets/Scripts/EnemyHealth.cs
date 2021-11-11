@@ -15,9 +15,10 @@ public class EnemyHealth : MonoBehaviour
             //Debug.Log("Attacked " + collision.gameObject.name);
             if (canHit == true)
             {
-                enemyHealth -= 2;
+                if(trig.gameObject.tag == "Attack") enemyHealth -= 2;
+                else if (trig.gameObject.tag == "Blast") enemyHealth -= 4;
             }
- 
+
             StartCoroutine(HitCD());
             Debug.Log("Current Health: " + enemyHealth);
         }
