@@ -8,9 +8,9 @@ public class EnemyHealth : MonoBehaviour
     public int enemyMaxHealth;
     [SerializeField]private int enemyHealth;
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D trig)
     {
-        if (collision.gameObject.name == "playerHitBox")
+        if (trig.gameObject.tag == "Attack" || trig.gameObject.tag == "Blast")
         {
             //Debug.Log("Attacked " + collision.gameObject.name);
             if (canHit == true)
