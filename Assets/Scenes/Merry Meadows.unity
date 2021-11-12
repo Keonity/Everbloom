@@ -3196,6 +3196,22 @@ PrefabInstance:
       propertyPath: myAudioSource3
       value: 
       objectReference: {fileID: 605258721}
+    - target: {fileID: 4568704448769124672, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: m_Size.x
+      value: 1.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568704448769124672, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568704448769124672, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8537226711237687113, guid: 7b12119d554a8b34bbdbae2d95fe4802, type: 3}
+    - target: {fileID: 4568704448769124672, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4568704448769124673, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
       propertyPath: m_Name
       value: Fiore - Placeholder Sprite
@@ -3309,6 +3325,10 @@ PrefabInstance:
       propertyPath: valueMultiplier
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114670592129933270, guid: afec60b2ce5345c4782cc0a45e5fa926, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7a2f01d530072034cb06aa732f7890e9, type: 3}
     - target: {fileID: 224437047118626172, guid: afec60b2ce5345c4782cc0a45e5fa926, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -6948,6 +6968,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArrowsHorizontal
       objectReference: {fileID: 0}
+    - target: {fileID: 114720714924287874, guid: 3066c3a8fcfd6fc4482868bf62045594, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dedc5892748df6d4ba10ab035a2a943f, type: 3}
+    - target: {fileID: 114791394632903650, guid: 3066c3a8fcfd6fc4482868bf62045594, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c81b2293a3110ff40bc996a7dac09659, type: 3}
     - target: {fileID: 224047778984712946, guid: 3066c3a8fcfd6fc4482868bf62045594, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7245,7 +7273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -9174168918306143551, guid: c2c612c3401811f459410e2f25f027d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31bf75cc0aba6dc4fbb292fbf8db779f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15739,7 +15767,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -329.6335, y: 248.37697}
+  m_AnchoredPosition: {x: -358.09525, y: 143.15477}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2035902997
