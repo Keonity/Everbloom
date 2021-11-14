@@ -3306,6 +3306,8 @@ MonoBehaviour:
   - {fileID: 1242198712}
   fullHeart: {fileID: 1109063772672943838, guid: 628e17cee5aa3cd488d43fe8cd26e3b1, type: 3}
   emptyHeart: {fileID: 1010658017314446782, guid: 628e17cee5aa3cd488d43fe8cd26e3b1, type: 3}
+  damageIndicatorCD: 0.5
+  damageTime: 0
 --- !u!1001 &415352225
 PrefabInstance:
   m_ObjectHideFlags: 0

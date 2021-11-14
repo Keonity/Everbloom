@@ -17,10 +17,16 @@ public class PlayerHealth : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    private SpriteRenderer spriteRenderer;
+    public float damageIndicatorCD;
+    private float damageTime;
+    private bool damageIndicator;
+    private bool damageIndicatorOn;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = this.GetComponent<SpriteRenderer>();
     }
 
 
@@ -28,7 +34,14 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.layer == 8 && canBeDamaged)
         {
+            if (damageIndicator)
+            {
+                spriteRenderer.color = new Color(100, 0, 0);
+                damageIndicatorOn = true;
+            }
+
             health--;
+            damageTime = 0;
             invincibilityTime = 0;
             canBeDamaged = false;
         }
@@ -38,6 +51,17 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         invincibilityTime += Time.deltaTime;
+        damageTime += Time.deltaTime;
+
+        if (damageTime >= damageIndicatorCD)
+        {
+            damageIndicator = true;
+        }
+
+        if (damageIndicatorOn && damageTime >= damageIndicatorCD)
+        {
+            spriteRenderer.color = new Color(255, 255, 255);
+        }
 
         if (invincibilityTime >= invincibilityCD)
         {
