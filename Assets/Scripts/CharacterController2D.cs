@@ -21,8 +21,6 @@ public class CharacterController2D : MonoBehaviour
 	private Vector3 m_Velocity = Vector3.zero;
 	public AudioSource src;
 	public SoundControl soundcontroller;
-	//private bool jumping = false;
-	//private bool dashing = false;
 
 	[Header("Events")]
 	[Space]
@@ -160,15 +158,13 @@ public class CharacterController2D : MonoBehaviour
 
 		}
 		// If the player should jump...
-		// [MOVED TO PUBLIC FUNCTION TO FIX TIMING BUG]
-		/*
-		if (m_Grounded && jump)
+		// [TIMING BUG WAS DUE TO m_Grounded STILL RETURNING TRUE FOR FIRST FEW FRAMES OF JUMP]
+		if (jump && m_Grounded && m_Rigidbody2D.velocity.y <= 0.1f)
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
-		*/
 
 		if (dash != 0f)
 		{
@@ -195,17 +191,6 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Jump()
     {
-		if (m_Grounded)
-		{
-			// Add a vertical force to the player.
-			m_Grounded = false;
-			/*
-			Vector2 jumpVelocity;
-			jumpVelocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce);
-			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, jumpVelocity, ref m_Velocity, m_MovementSmoothing);
-			*/
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-		}
 	}
 
 }

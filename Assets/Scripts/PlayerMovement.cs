@@ -62,12 +62,15 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump, dash);
+        /*
         if (jump)
         {
             controller.Jump();
             jump = false;
         }
+        */
+        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump, dash);
+        jump = false;
         dash = 0f;
         if (dashTimer != 0f) dashTimer -= Time.fixedDeltaTime;
     }

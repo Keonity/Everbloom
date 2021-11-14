@@ -3192,26 +3192,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 405870596, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: hearts.Array.data[0]
+      value: 
+      objectReference: {fileID: 984685447}
+    - target: {fileID: 405870596, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: hearts.Array.data[1]
+      value: 
+      objectReference: {fileID: 2035902999}
+    - target: {fileID: 405870596, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: hearts.Array.data[2]
+      value: 
+      objectReference: {fileID: 17844668}
+    - target: {fileID: 405870596, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: hearts.Array.data[3]
+      value: 
+      objectReference: {fileID: 949198694}
+    - target: {fileID: 405870596, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: hearts.Array.data[4]
+      value: 
+      objectReference: {fileID: 1242198712}
     - target: {fileID: 682998180, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
       propertyPath: myAudioSource3
       value: 
       objectReference: {fileID: 605258721}
-    - target: {fileID: 4568704448769124672, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
-      propertyPath: m_Size.x
-      value: 1.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 4568704448769124672, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4568704448769124672, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
-      propertyPath: m_Sprite
+    - target: {fileID: 703030573708635635, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: hearts.Array.data[0]
       value: 
-      objectReference: {fileID: -8537226711237687113, guid: 7b12119d554a8b34bbdbae2d95fe4802, type: 3}
-    - target: {fileID: 4568704448769124672, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 984685447}
+    - target: {fileID: 703030573708635635, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: hearts.Array.data[1]
+      value: 
+      objectReference: {fileID: 2035902999}
+    - target: {fileID: 703030573708635635, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: hearts.Array.data[2]
+      value: 
+      objectReference: {fileID: 17844668}
+    - target: {fileID: 703030573708635635, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: hearts.Array.data[3]
+      value: 
+      objectReference: {fileID: 949198694}
+    - target: {fileID: 703030573708635635, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
+      propertyPath: hearts.Array.data[4]
+      value: 
+      objectReference: {fileID: 1242198712}
     - target: {fileID: 4568704448769124673, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
       propertyPath: m_Name
       value: Fiore - Placeholder Sprite
@@ -3220,10 +3244,6 @@ PrefabInstance:
       propertyPath: src
       value: 
       objectReference: {fileID: 118568663}
-    - target: {fileID: 4568704448769124676, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
-      propertyPath: m_JumpForce
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 4568704448769124679, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3270,47 +3290,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
---- !u!1 &405870594 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4568704448769124673, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
-  m_PrefabInstance: {fileID: 405870593}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &405870595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405870594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e2c73c2846ae374bbd1a20e5aab3191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &405870596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405870594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb2be86bbe9667642a27bd14851217c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 5
-  numHearts: 5
-  invincibilityCD: 1
-  hearts:
-  - {fileID: 984685447}
-  - {fileID: 2035902999}
-  - {fileID: 17844668}
-  - {fileID: 949198694}
-  - {fileID: 1242198712}
-  fullHeart: {fileID: 1109063772672943838, guid: 628e17cee5aa3cd488d43fe8cd26e3b1, type: 3}
-  emptyHeart: {fileID: 1010658017314446782, guid: 628e17cee5aa3cd488d43fe8cd26e3b1, type: 3}
-  damageIndicatorCD: 0.5
 --- !u!1001 &415352225
 PrefabInstance:
   m_ObjectHideFlags: 0
