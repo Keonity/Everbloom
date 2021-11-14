@@ -160,12 +160,15 @@ public class CharacterController2D : MonoBehaviour
 
 		}
 		// If the player should jump...
+		// [MOVED TO PUBLIC FUNCTION TO FIX TIMING BUG]
+		/*
 		if (m_Grounded && jump)
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
+		*/
 
 		if (dash != 0f)
 		{
@@ -188,6 +191,21 @@ public class CharacterController2D : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	public void Jump()
+    {
+		if (m_Grounded)
+		{
+			// Add a vertical force to the player.
+			m_Grounded = false;
+			/*
+			Vector2 jumpVelocity;
+			jumpVelocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce);
+			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, jumpVelocity, ref m_Velocity, m_MovementSmoothing);
+			*/
+			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+		}
 	}
 
 }

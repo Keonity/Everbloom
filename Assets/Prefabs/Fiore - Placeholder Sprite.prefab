@@ -81,6 +81,10 @@ GameObject:
   - component: {fileID: 682998179}
   - component: {fileID: 682998180}
   - component: {fileID: 682998189}
+  - component: {fileID: 405870595}
+  - component: {fileID: 405870596}
+  - component: {fileID: 341360904644069212}
+  - component: {fileID: 703030573708635635}
   m_Layer: 7
   m_Name: Fiore - Placeholder Sprite
   m_TagString: Player
@@ -145,12 +149,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1509690687825009327, guid: 3e228ebfcaf8cbf4ca5139a08ac4c4c7, type: 3}
+  m_Sprite: {fileID: -8537226711237687113, guid: 7b12119d554a8b34bbdbae2d95fe4802, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.375, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -173,8 +177,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.375, y: 2}
+    newSize: {x: 1.375, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -215,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69dd90186291c2f4e977e2cc9c94646b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 225
+  m_JumpForce: 100
   m_DashForce: 100
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
@@ -540,6 +544,78 @@ MonoBehaviour:
   swipeSensitivity: 30
   blastCharge: 1
   blastCooldown: 3
+--- !u!114 &405870595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4568704448769124673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2c73c2846ae374bbd1a20e5aab3191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &405870596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4568704448769124673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2be86bbe9667642a27bd14851217c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  numHearts: 5
+  invincibilityCD: 1
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 1109063772672943838, guid: 628e17cee5aa3cd488d43fe8cd26e3b1, type: 3}
+  emptyHeart: {fileID: 1010658017314446782, guid: 628e17cee5aa3cd488d43fe8cd26e3b1, type: 3}
+  damageIndicatorCD: 0
+--- !u!114 &341360904644069212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4568704448769124673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2c73c2846ae374bbd1a20e5aab3191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &703030573708635635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4568704448769124673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2be86bbe9667642a27bd14851217c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  numHearts: 5
+  invincibilityCD: 1
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 1109063772672943838, guid: 628e17cee5aa3cd488d43fe8cd26e3b1, type: 3}
+  emptyHeart: {fileID: 1010658017314446782, guid: 628e17cee5aa3cd488d43fe8cd26e3b1, type: 3}
+  damageIndicatorCD: 0.5
 --- !u!1 &7961400982904114377
 GameObject:
   m_ObjectHideFlags: 0
