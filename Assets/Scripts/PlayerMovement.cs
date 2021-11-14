@@ -9,25 +9,21 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public SoundControl soundmanager;
     public float runSpeed = 40f;
-    public float dashCooldown = 1f;
 
 
     private float horizontalMove = 0f;
     private bool jump = false;
     //bool Moving = false;
     private float dash = 0f;
-    private float dashTimer = 0f;
 
 
 
     public void Dash(float dir)
     {
-        if (dash == 0f && dashTimer <= 0f)
+        if (dash == 0f)
         {
             dash = dir / System.Math.Abs(dir);
-            dashTimer = dashCooldown;
         }
-
     }
 
     // Update is called once per frame
@@ -62,16 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        /*
-        if (jump)
-        {
-            controller.Jump();
-            jump = false;
-        }
-        */
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump, dash);
         jump = false;
         dash = 0f;
-        if (dashTimer != 0f) dashTimer -= Time.fixedDeltaTime;
     }
 }

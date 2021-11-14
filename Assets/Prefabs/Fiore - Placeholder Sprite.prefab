@@ -254,7 +254,6 @@ MonoBehaviour:
   animator: {fileID: 4568704448769124682}
   soundmanager: {fileID: 0}
   runSpeed: 35
-  dashCooldown: 1
 --- !u!95 &4568704448769124682
 Animator:
   serializedVersion: 3
@@ -542,8 +541,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swipeSensitivity: 30
-  blastCharge: 1
+  dashCooldown: 1
+  blastCharge: 0.5
   blastCooldown: 3
+  dashText: {fileID: 0}
+  blastText: {fileID: 0}
 --- !u!114 &405870595
 MonoBehaviour:
   m_ObjectHideFlags: 0

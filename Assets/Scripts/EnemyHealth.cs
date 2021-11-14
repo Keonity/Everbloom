@@ -15,8 +15,12 @@ public class EnemyHealth : MonoBehaviour
             //Debug.Log("Attacked " + collision.gameObject.name);
             if (canHit == true)
             {
-                if(trig.gameObject.tag == "Attack") enemyHealth -= 2;
-                else if (trig.gameObject.tag == "Blast") enemyHealth -= 4;
+                if (trig.gameObject.tag == "Attack") enemyHealth -= 2;
+                else if (trig.gameObject.tag == "Blast")
+                {
+                    enemyHealth -= 4;
+                    trig.gameObject.GetComponent<BlastController>().DestroyBlast();
+                }
             }
 
             StartCoroutine(HitCD());
