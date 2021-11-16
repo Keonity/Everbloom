@@ -19,7 +19,8 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
-	public AudioSource src;
+	public AudioSource jumpSoundSource;
+	public AudioSource dashSoundSource;
 	public SoundControl soundcontroller;
 
 	[Header("Events")]
@@ -36,7 +37,6 @@ public class CharacterController2D : MonoBehaviour
 	
 	private void Awake()
 	{
-		soundcontroller.assignClips();
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
 		if (OnLandEvent == null)
@@ -128,17 +128,7 @@ public class CharacterController2D : MonoBehaviour
 				// ... flip the player.
 				Flip();
 			}
-			/*if (move > 0 | move < 0)
-			{
-				if (!src.isPlaying)
-				{
-					src.Play();
-				}
-			}
-			else
-			{
-				src.Stop();
-			}*/
+
 			if (move > 0 | move < 0)
 			{
 				if (!soundcontroller.myAudioSource1.isPlaying)
@@ -161,9 +151,11 @@ public class CharacterController2D : MonoBehaviour
 		// [TIMING BUG WAS DUE TO m_Grounded STILL RETURNING TRUE FOR FIRST FEW FRAMES OF JUMP]
 		if (jump && m_Grounded && m_Rigidbody2D.velocity.y <= 0.1f)
 		{
+
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			jumpSoundSource.Play();
 		}
 
 		if (dash != 0f)
@@ -173,6 +165,7 @@ public class CharacterController2D : MonoBehaviour
 			dashVelocity = new Vector2(m_DashForce * dash, m_Rigidbody2D.velocity.x);
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, dashVelocity, ref m_Velocity, m_MovementSmoothing);
 			//m_Rigidbody2D.AddForce(new Vector2(m_DashForce * dash, 0f));
+			dashSoundSource.Play();
 
 		}
 	}

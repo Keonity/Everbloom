@@ -8,13 +8,15 @@ public class SoundControl : MonoBehaviour
     public AudioClip audioClip1;
     public AudioClip audioClip2;
     public AudioClip audioClip3;
-    public AudioClip audioClip4;
+    public AudioClip audioClip4; //hurt sound effects
     public AudioClip audioClip5;
     public AudioClip audioClip6;
+    public AudioClip audioClip7; //jump sound effect
     public AudioSource myAudioSource1;
     public AudioSource myAudioSource2;
     public AudioSource myAudioSource3;
     public AudioSource myAudioSource4;
+    public AudioSource myAudioSource5;
 
     // Start is called before the first frame update
     void Start()

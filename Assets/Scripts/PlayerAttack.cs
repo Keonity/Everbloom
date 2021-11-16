@@ -12,6 +12,8 @@ public class PlayerAttack : MonoBehaviour
     public Animator animator;
     public SoundControl soundcontroller;
 
+    public AudioSource blastSoundSource;
+
     public Rigidbody2D blastPrefab;
 
     IEnumerator waitAttack()
@@ -44,6 +46,8 @@ public class PlayerAttack : MonoBehaviour
         //Debug.DrawLine(transform.position, pos + dir * 10, Color.red, Mathf.Infinity);
         Rigidbody2D blast = GameObject.Instantiate(blastPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, angle)));
         blast.GetComponent<Rigidbody2D>().velocity = dir * blastSpeed;
+        blastSoundSource.Play();
+
     }
 
     // Start is called before the first frame update
