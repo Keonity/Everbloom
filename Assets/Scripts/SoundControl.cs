@@ -8,9 +8,13 @@ public class SoundControl : MonoBehaviour
     public AudioClip audioClip1;
     public AudioClip audioClip2;
     public AudioClip audioClip3;
+    public AudioClip audioClip4;
+    public AudioClip audioClip5;
+    public AudioClip audioClip6;
     public AudioSource myAudioSource1;
     public AudioSource myAudioSource2;
     public AudioSource myAudioSource3;
+    public AudioSource myAudioSource4;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +24,7 @@ public class SoundControl : MonoBehaviour
         myAudioSource2.clip = audioClip2;
         myAudioSource2.clip = audioClip3;
         myAudioSource2.volume = 0.15f;
+        myAudioSource4.clip = audioClip4;
 
     }
     public AudioSource AddAudio(bool loop, bool playAwake, float vol)
@@ -53,5 +58,9 @@ public class SoundControl : MonoBehaviour
     public void PlaySoundClip3()
     {
         myAudioSource3.PlayOneShot(audioClip3);
+    }
+    public void PlaySound4()
+    {
+        myAudioSource4.Play();
     }
 }

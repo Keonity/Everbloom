@@ -23,10 +23,17 @@ public class PlayerHealth : MonoBehaviour
     private bool damageIndicator;
     private bool damageIndicatorOn;
 
+
+    public AudioSource hurtSoundSource1;
+    public AudioSource hurtSoundSource2;
+    public AudioSource hurtSoundSource3;
+
+
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
+
     }
 
 
@@ -34,10 +41,27 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.layer == 8 && canBeDamaged)
         {
+
             if (damageIndicator)
             {
                 spriteRenderer.color = new Color(100, 0, 0);
                 damageIndicatorOn = true;
+            }
+
+            int randomNumber = Random.Range(0, 2);
+            switch (randomNumber)
+            {
+                case 0:
+                    hurtSoundSource1.Play();
+                    break;
+                case 1:
+                    hurtSoundSource2.Play();
+                    break;
+                case 2:
+                    hurtSoundSource3.Play();
+                    break;
+                default:
+                    break;
             }
 
             health--;
