@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    private SpriteRenderer spriteRenderer;
+    private float damageTime;
+    public float damageIndicatorCD;
+    private bool damageIndicator;
+    private bool damageIndicatorOn;
+
     private bool canHit = true;
     public int enemyMaxHealth;
     [SerializeField]private int enemyHealth;
@@ -12,6 +18,12 @@ public class EnemyHealth : MonoBehaviour
     {
         if (trig.gameObject.tag == "Attack" || trig.gameObject.tag == "Blast")
         {
+            if (damageIndicator)
+            {
+                spriteRenderer.color = new Color(100, 0, 0);
+                damageIndicatorOn = true;
+            }
+
             //Debug.Log("Attacked " + collision.gameObject.name);
             if (canHit == true)
             {
@@ -25,12 +37,14 @@ public class EnemyHealth : MonoBehaviour
 
             StartCoroutine(HitCD());
             Debug.Log("Current Health: " + enemyHealth);
+            damageTime = 0;
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = this.GetComponent<SpriteRenderer>();
         enemyHealth = enemyMaxHealth;
     }
 
@@ -43,6 +57,19 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        damageTime += Time.deltaTime;
+
+
+        if (damageTime >= damageIndicatorCD)
+        {
+            damageIndicator = true;
+        }
+
+        if (damageIndicatorOn && damageTime >= damageIndicatorCD)
+        {
+            spriteRenderer.color = new Color(255, 255, 255);
+        }
+
         if (enemyHealth <= 0)
         {
             Destroy(this.gameObject);
