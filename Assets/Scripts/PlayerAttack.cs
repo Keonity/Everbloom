@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour
     public Animator animator;
     public SoundControl soundcontroller;
 
-
+    public AudioSource blastSoundSource;
 
     public Rigidbody2D blastPrefab;
 
@@ -39,6 +39,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void Blast(Vector2 pos)
     {
+        blastSoundSource.Play();
         Vector3 playerPix = Camera.main.WorldToScreenPoint(transform.position);
         Vector2 dir = (pos - new Vector2(playerPix.x, playerPix.y)).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
@@ -46,7 +47,7 @@ public class PlayerAttack : MonoBehaviour
         //Debug.DrawLine(transform.position, pos + dir * 10, Color.red, Mathf.Infinity);
         Rigidbody2D blast = GameObject.Instantiate(blastPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, angle)));
         blast.GetComponent<Rigidbody2D>().velocity = dir * blastSpeed;
-
+        
 
     }
 
