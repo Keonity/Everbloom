@@ -10,6 +10,7 @@ TagManager:
   - Interactive
   - Enemy
   - GestureBlock
+  - Sign
   layers:
   - Default
   - TransparentFX
