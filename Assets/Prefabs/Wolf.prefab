@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2605820296074788574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.158, y: -0.162, z: 0}
+  m_LocalPosition: {x: -1.003, y: -0.878, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2605820296192500240}
@@ -154,7 +154,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -173,7 +173,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012330443, y: 0.0050526597}
+  m_Offset: {x: 0, y: 0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -184,7 +184,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.26023674, y: 0.17999467}
+  m_Size: {x: 1.375, y: 1.1875}
   m_EdgeRadius: 0
 --- !u!114 &2605820296192500243
 MonoBehaviour:
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed5333a4f7c00f429c14fa25cfb14bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.8
+  moveSpeed: 1
   groundCheckPoint: {fileID: 2605820296074788575}
   wallCheckPoint: {fileID: 2605820296562058273}
   circleRadius: 0.3
@@ -224,11 +224,11 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.555}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.11242958, y: -0.086163945}
-  - {x: 0.12712686, y: -0.08540816}
+  - {x: -0.6875, y: 0}
+  - {x: 0.6875, y: 0}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a92ce4a74f53d48bac1cdf617e5cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageIndicatorCD: 0.4
   enemyMaxHealth: 4
   enemyHealth: 0
 --- !u!1 &2605820296562058272
@@ -271,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2605820296562058272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1836, y: 0.0032, z: 0}
+  m_LocalPosition: {x: -1.034, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2605820296192500240}
