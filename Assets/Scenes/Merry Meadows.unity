@@ -5647,7 +5647,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 703030573708635635, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4e73e78f7f987144aa86e63d58568407, type: 3}
 --- !u!1001 &415352225
 PrefabInstance:
@@ -12103,7 +12104,6 @@ MonoBehaviour:
   hitBox: {fileID: 0}
   animator: {fileID: 0}
   soundcontroller: {fileID: 0}
-  blastSoundSource: {fileID: 0}
   blastPrefab: {fileID: 0}
 --- !u!58 &776305453
 CircleCollider2D:
