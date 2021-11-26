@@ -7,6 +7,8 @@ public class Checkpoint : MonoBehaviour
 
     private GameMaster gm;
 
+    public Animator animator;
+
     public Sprite LitLamp;
     public Sprite UnlitLamp;
 
@@ -14,8 +16,9 @@ public class Checkpoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            this.GetComponent<Animator>().enabled = true;
             gm.lastCheckpointPos = transform.position;
-            this.GetComponent<SpriteRenderer>().sprite = LitLamp;
+            //this.GetComponent<SpriteRenderer>().sprite = LitLamp;
         }
     }
     // Start is called before the first frame update
