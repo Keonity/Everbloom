@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ReadSign : MonoBehaviour
 {
+    //public DialogueTrigger dialogueTrigger;
+
+    public Button button;
     private bool inRange;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +40,7 @@ public class ReadSign : MonoBehaviour
             if (inRange)
             {
                 Debug.Log("Reading sign");
+                //dialogueTrigger.TriggerDialogue();
             }
         }
         //Debug.Log("Touched: " + results[0]);
