@@ -82,7 +82,7 @@ public class GestureController : MonoBehaviour
                     }
                     if (blastChargeTimer <= 0f && !blastReset)
                     {
-                        Debug.Log(touch.position);
+                        //Debug.Log(touch.position);
                         playerAttk.Blast(touch.position);
                         blastReset = true;
                         blastCoolTimer = blastCooldown;
