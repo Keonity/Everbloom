@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        Time.timeScale = 0;
         animator.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
@@ -64,7 +65,7 @@ public class DialogueManager : MonoBehaviour
         foreach(char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(timeBetweenCharacters);
+            yield return new WaitForSecondsRealtime(timeBetweenCharacters);
         }
     }
 
@@ -72,6 +73,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("End of conversation");
         animator.SetBool("IsOpen", false);
+        Time.timeScale = 1;
     }
 
 
