@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed5333a4f7c00f429c14fa25cfb14bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 2
   groundCheckPoint: {fileID: 2605820296074788575}
   wallCheckPoint: {fileID: 2605820296562058273}
   circleRadius: 0.3
