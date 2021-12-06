@@ -21,6 +21,7 @@ public class WolfController : MonoBehaviour
     //[SerializeField] Vector2 boxSize;
     private float chargeTimer;
     public float chargeCD;
+    private float resetTimer;
 
     [Header("For Seeing Player")]
     [SerializeField] Vector2 lineOfSight;
@@ -50,7 +51,6 @@ public class WolfController : MonoBehaviour
             FlipTowardsPlayer();
             enemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
             enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
-            //enemyRB.velocity = new Vector2(0, 0);
             enemyRB.drag = 0f;
             enemyRB.mass = 1f;
             enemyRB.bodyType = RigidbodyType2D.Dynamic;
@@ -64,6 +64,7 @@ public class WolfController : MonoBehaviour
         enemyAnimator = GetComponent<Animator>();
         moveDirection = -1;
         chargeTimer = 0;
+        resetTimer = 0;
     }
 
     private void FixedUpdate()
@@ -77,36 +78,35 @@ public class WolfController : MonoBehaviour
 
         if (!canSeePlayer)
         {
-            //Patrolling();
             FlipTowardsPlayer();
-            enemyRB.constraints = RigidbodyConstraints2D.FreezePositionX;
-            //enemyRB.velocity = new Vector2(moveSpeed * moveDirection, 0);
+            enemyRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         }
 
-        else if (canSeePlayer && chargeTimer <= 0)
+        else if (canSeePlayer && chargeTimer <= 0 && resetTimer <= 0)
         {
             enemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
-            chargeTimer = chargeCD;
-            //Debug.Log("Jump attack");
+            Debug.Log("Jump attack");
             FlipTowardsPlayer();
-            JumpAttack();
+            //JumpAttack();
+            enemyRB.velocity = new Vector2(2 * moveSpeed * moveDirection, enemyRB.velocity.y);
+            if (resetTimer <= 0)
+            {
+                chargeTimer = chargeCD;
+                resetTimer = 5f;
+            }
         }
 
-        else if (canSeePlayer && chargeTimer > 0)
+        else if (canSeePlayer && chargeTimer > 0 && resetTimer > 0)
         {
+            //Debug.Log("Reg Movement");
             enemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
             FlipTowardsPlayer();
-            enemyRB.velocity = new Vector2(moveSpeed * moveDirection, 0);
+            //enemyRB.velocity = new Vector2(0, 0);
+            enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
         }
 
-        chargeTimer -= Time.deltaTime;
-
-        //Patrolling();
-
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            JumpAttack();
-        }*/
+        chargeTimer -= Time.fixedDeltaTime;
+        //resetTimer -= Time.fixedDeltaTime;
 
     }
 
@@ -135,19 +135,16 @@ public class WolfController : MonoBehaviour
     {
         float distanceFromPlayer = player.position.x - transform.position.x;
 
-        if (distanceFromPlayer < 5f || distanceFromPlayer > -5f)
-        {
-            Debug.Log("Jump Attack");
-            enemyRB.velocity = new Vector2(1.5f * moveSpeed * moveDirection, enemyRB.velocity.y);
-            //enemyRB.AddForce(new Vector2(distanceFromPlayer, 0), ForceMode2D.Impulse);
+        Debug.Log("Jump Attack");
+        //enemyRB.velocity = new Vector2(2f * moveSpeed * moveDirection, enemyRB.velocity.y);
+        //enemyRB.AddForce(new Vector2(25 * distanceFromPlayer, 5), ForceMode2D.Impulse);
+        enemyRB.AddForce(new Vector2(2f * distanceFromPlayer, 3));
 
-        }
-
-        else if (distanceFromPlayer < 10f || distanceFromPlayer > -10f)
+        /*if (distanceFromPlayer > 10 || distanceFromPlayer < 10)
         {
-            Debug.Log("Moving");
             enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
-        }
+        }*/
+
     }
 
     void FlipTowardsPlayer()
@@ -169,11 +166,11 @@ public class WolfController : MonoBehaviour
         moveDirection *= -1;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
-        enemyRB.velocity = Vector2.zero;
-        enemyRB.drag = 200000f;
-        enemyRB.mass = 200000f;
-        enemyRB.drag = 0f;
-        enemyRB.mass = 1f;
+        //enemyRB.velocity = Vector2.zero;
+        //enemyRB.drag = 200000f;
+        //enemyRB.mass = 200000f;
+        //enemyRB.drag = 0f;
+        //enemyRB.mass = 1f;
     }
 
     void AnimationController()
