@@ -31,6 +31,7 @@ public class WolfController : MonoBehaviour
     [Header("Other")]
     private Rigidbody2D enemyRB;
     private Animator enemyAnimator;
+    //private bool charging = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -82,28 +83,28 @@ public class WolfController : MonoBehaviour
             enemyRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         }
 
-        else if (canSeePlayer && chargeTimer <= 0 && resetTimer <= 0)
+        else if (canSeePlayer)
         {
             enemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
             Debug.Log("Jump attack");
             FlipTowardsPlayer();
-            //JumpAttack();
-            enemyRB.velocity = new Vector2(2 * moveSpeed * moveDirection, enemyRB.velocity.y);
+            JumpAttack();
+            /*enemyRB.velocity = new Vector2(2 * moveSpeed * moveDirection, enemyRB.velocity.y);
             if (resetTimer <= 0)
             {
                 chargeTimer = chargeCD;
                 resetTimer = 5f;
-            }
+            }*/
         }
 
-        else if (canSeePlayer && chargeTimer > 0 && resetTimer > 0)
+        /*else if (canSeePlayer && chargeTimer > 0 && resetTimer > 0)
         {
             //Debug.Log("Reg Movement");
             enemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
             FlipTowardsPlayer();
             //enemyRB.velocity = new Vector2(0, 0);
             enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
-        }
+        }*/
 
         chargeTimer -= Time.fixedDeltaTime;
         //resetTimer -= Time.fixedDeltaTime;
@@ -138,12 +139,23 @@ public class WolfController : MonoBehaviour
         Debug.Log("Jump Attack");
         //enemyRB.velocity = new Vector2(2f * moveSpeed * moveDirection, enemyRB.velocity.y);
         //enemyRB.AddForce(new Vector2(25 * distanceFromPlayer, 5), ForceMode2D.Impulse);
-        enemyRB.AddForce(new Vector2(2f * distanceFromPlayer, 3));
+        //enemyRB.AddForce(new Vector2(2f * distanceFromPlayer, 3));
 
-        /*if (distanceFromPlayer > 10 || distanceFromPlayer < 10)
+        if (chargeTimer <= 0 && distanceFromPlayer <= 10)
         {
+            enemyRB.AddForce(new Vector2(5f * (player.position.x - transform.position.x), 5));
+            enemyAnimator.SetBool("charging", true);
+            if (chargeTimer <= -0.5f)
+            {
+                chargeTimer = chargeCD;
+            }
+            //enemyRB.AddForce(new Vector2(2f * distanceFromPlayer, 3));
+        }
+        else
+        {
+            enemyAnimator.SetBool("charging", false);
             enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
-        }*/
+        }
 
     }
 
