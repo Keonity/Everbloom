@@ -21,6 +21,7 @@ public class WolfController : MonoBehaviour
     //[SerializeField] Vector2 boxSize;
     private float chargeTimer;
     public float chargeCD;
+    public AudioSource chargeSoundSource;
 
     [Header("For Seeing Player")]
     [SerializeField] Vector2 lineOfSight;
@@ -120,6 +121,7 @@ public class WolfController : MonoBehaviour
         {
             Debug.Log("Jump Attack");
             enemyRB.AddForce(new Vector2(distanceFromPlayer + 3f, 0), ForceMode2D.Impulse);
+            chargeSoundSource.Play();
 
         }
 

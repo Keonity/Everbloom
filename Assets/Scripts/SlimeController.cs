@@ -23,7 +23,9 @@ public class SlimeController : MonoBehaviour
     private bool isGrounded;
     private float jumpTimer;
     public float jumpCD;
-
+    public AudioSource jumpAttackSoundSource1;
+    public AudioSource jumpAttackSoundSource2;
+    public AudioSource jumpAttackSoundSource3;
     [Header("For Seeing Player")]
     [SerializeField] Vector2 lineOfSight;
     [SerializeField] LayerMask playerLayer;
@@ -124,6 +126,21 @@ public class SlimeController : MonoBehaviour
         {
             enemyRB.velocity = new Vector2(0, 0);
             enemyRB.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse);
+            int randomNumber = Random.Range(0, 2);
+            switch (randomNumber)
+            {
+                case 0:
+                    jumpAttackSoundSource1.Play();
+                    break;
+                case 1:
+                    jumpAttackSoundSource2.Play();
+                    break;
+                case 2:
+                    jumpAttackSoundSource3.Play();
+                    break;
+                default:
+                    break;
+            }
         }
 
     }
