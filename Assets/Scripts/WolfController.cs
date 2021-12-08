@@ -21,7 +21,6 @@ public class WolfController : MonoBehaviour
     //[SerializeField] Vector2 boxSize;
     private float chargeTimer;
     public float chargeCD;
-    private float resetTimer;
     public AudioSource chargeSoundSource;
 
     [Header("For Seeing Player")]
@@ -32,30 +31,23 @@ public class WolfController : MonoBehaviour
     [Header("Other")]
     private Rigidbody2D enemyRB;
     private Animator enemyAnimator;
-    //private bool charging = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Fiore")
+        if (collision.gameObject.name == "Fiore - Placeholder Sprite")
         {
-            enemyRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
-            enemyRB.velocity = Vector2.zero;
-            enemyRB.drag = 200000f;
-            enemyRB.mass = 200000f;
-            enemyRB.bodyType = RigidbodyType2D.Kinematic;
+            enemyRB.drag = 200f;
+            enemyRB.mass = 200f;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Fiore")
+        if (collision.gameObject.name == "Fiore - Placeholder Sprite")
         {
-            FlipTowardsPlayer();
-            enemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
-            enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
+            enemyRB.velocity = new Vector2(0, 0);
             enemyRB.drag = 0f;
             enemyRB.mass = 1f;
-            enemyRB.bodyType = RigidbodyType2D.Dynamic;
         }
     }
 
@@ -66,7 +58,6 @@ public class WolfController : MonoBehaviour
         enemyAnimator = GetComponent<Animator>();
         moveDirection = -1;
         chargeTimer = 0;
-        resetTimer = 0;
     }
 
     private void FixedUpdate()
@@ -80,35 +71,25 @@ public class WolfController : MonoBehaviour
 
         if (!canSeePlayer)
         {
-            FlipTowardsPlayer();
-            enemyRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            Patrolling();
         }
 
-        else if (canSeePlayer)
+        else if (canSeePlayer && chargeTimer <= 0)
         {
-            enemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
-            Debug.Log("Jump attack");
+            chargeTimer = chargeCD;
+            //Debug.Log("Jump attack");
             FlipTowardsPlayer();
             JumpAttack();
-            /*enemyRB.velocity = new Vector2(2 * moveSpeed * moveDirection, enemyRB.velocity.y);
-            if (resetTimer <= 0)
-            {
-                chargeTimer = chargeCD;
-                resetTimer = 5f;
-            }*/
         }
 
-        /*else if (canSeePlayer && chargeTimer > 0 && resetTimer > 0)
-        {
-            //Debug.Log("Reg Movement");
-            enemyRB.constraints = RigidbodyConstraints2D.FreezeRotation;
-            FlipTowardsPlayer();
-            //enemyRB.velocity = new Vector2(0, 0);
-            enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
-        }*/
+        chargeTimer -= Time.deltaTime;
 
-        chargeTimer -= Time.fixedDeltaTime;
-        //resetTimer -= Time.fixedDeltaTime;
+        //Patrolling();
+
+        /*if (Input.GetKeyDown(KeyCode.Space))
+        {
+            JumpAttack();
+        }*/
 
     }
 
@@ -129,36 +110,26 @@ public class WolfController : MonoBehaviour
             }
         }
 
-        enemyRB.velocity = new Vector2(0, 0);
-        enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
+        //enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
     }
 
     void JumpAttack()
     {
         float distanceFromPlayer = player.position.x - transform.position.x;
 
-        Debug.Log("Jump Attack");
-        //enemyRB.velocity = new Vector2(2f * moveSpeed * moveDirection, enemyRB.velocity.y);
-        //enemyRB.AddForce(new Vector2(25 * distanceFromPlayer, 5), ForceMode2D.Impulse);
-        //enemyRB.AddForce(new Vector2(2f * distanceFromPlayer, 3));
-
-        if (chargeTimer <= 0 && distanceFromPlayer <= 10)
+        if (distanceFromPlayer < 5f || distanceFromPlayer > -5f)
         {
-            enemyRB.AddForce(new Vector2(5f * (player.position.x - transform.position.x), 5));
-            enemyAnimator.SetBool("charging", true);
-            if (chargeTimer <= -0.5f)
-            {
-                chargeTimer = chargeCD;
-            }
+            Debug.Log("Jump Attack");
+            enemyRB.AddForce(new Vector2(distanceFromPlayer + 3f, 0), ForceMode2D.Impulse);
             chargeSoundSource.Play();
-            //enemyRB.AddForce(new Vector2(2f * distanceFromPlayer, 3));
+
         }
-        else
+
+        else if (distanceFromPlayer < 10f || distanceFromPlayer > -10f)
         {
-            enemyAnimator.SetBool("charging", false);
+            Debug.Log("Moving");
             enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
         }
-
     }
 
     void FlipTowardsPlayer()
@@ -180,11 +151,6 @@ public class WolfController : MonoBehaviour
         moveDirection *= -1;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
-        //enemyRB.velocity = Vector2.zero;
-        //enemyRB.drag = 200000f;
-        //enemyRB.mass = 200000f;
-        //enemyRB.drag = 0f;
-        //enemyRB.mass = 1f;
     }
 
     void AnimationController()
@@ -208,10 +174,6 @@ public class WolfController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canSeePlayer)
-        {
-            FlipTowardsPlayer();
-        }
 
     }
 }

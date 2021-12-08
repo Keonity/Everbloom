@@ -12,7 +12,6 @@ public class EnemyHealth : MonoBehaviour
 
     private bool canHit = true;
     public int enemyMaxHealth;
-    public float enemyDeathAnimTime = 0f;
     [SerializeField]private int enemyHealth;
 
     public void OnTriggerEnter2D(Collider2D trig)
@@ -55,13 +54,6 @@ public class EnemyHealth : MonoBehaviour
         canHit = true;
     }
 
-    IEnumerator Die()
-    {
-        yield return new WaitForSecondsRealtime(enemyDeathAnimTime);
-        this.gameObject.GetComponent<Animator>().SetBool("dead", true);
-        Destroy(this.gameObject);
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -80,10 +72,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
-            //Die();
-            this.gameObject.GetComponent<Animator>().SetBool("dead", true);
-            HitCD();
-            Destroy(this.gameObject, enemyDeathAnimTime);
+            Destroy(this.gameObject);
         }
     }
 }
