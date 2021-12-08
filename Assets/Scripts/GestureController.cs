@@ -16,6 +16,10 @@ public class GestureController : MonoBehaviour
     public Text dashText;
     public Text blastText;
 
+    public Sprite[] dashSprites = new Sprite[8];
+    public Sprite[] blastSprites = new Sprite[8];
+    public Image dashUI;
+    public Image blastUI;
 
 
     private PlayerMovement playerMove;
@@ -111,24 +115,27 @@ public class GestureController : MonoBehaviour
 
     public void UpdateUI()
     {
-        if (dashTimer <= 0f) dashText.color = Color.green;
+        if (dashTimer <= 0f) dashUI.sprite = dashSprites[7];
         else
         {
             float cval = (dashCooldown - dashTimer) / dashCooldown;
-            dashText.color = new Color(cval, cval, cval);
+            //Debug.Log((int)(cval * 7));
+            dashUI.sprite = dashSprites[(int)(cval * 7)];
         }
 
         //Debug.Log(blastChargeTimer);
+        /*
         if (blastChargeTimer != blastCharge && blastChargeTimer > 0f)
         {
             float cval = (blastCharge - blastChargeTimer) / blastCharge;
             blastText.color = new Color(cval, 0f, 0f);
         }
-        else if (blastCoolTimer <= 0f) blastText.color = Color.green;
+        */
+        if (blastCoolTimer <= 0f) blastUI.sprite = blastSprites[7];
         else
         {
             float cval = (blastCooldown - blastCoolTimer) / blastCooldown;
-            blastText.color = new Color(cval, cval, cval);
+            blastUI.sprite = blastSprites[(int)(cval * 7)];
         }
     }
 
