@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BossFight : MonoBehaviour
 {
@@ -30,7 +32,22 @@ public class BossFight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if (bossStarted)
+        {
+            if (!boss1)
+            {
+                if (!boss2)
+                {
+                    if (!boss3)
+                    {
+                        if (!boss4)
+                        {
+                            GameObject.Find("End Of Game").GetComponent<Animator>().SetBool("IsOpen", true);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     IEnumerator StartFight()

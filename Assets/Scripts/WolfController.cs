@@ -144,7 +144,8 @@ public class WolfController : MonoBehaviour
 
         if (chargeTimer <= 0 && distanceFromPlayer <= 10)
         {
-            enemyRB.AddForce(new Vector2(5f * (player.position.x - transform.position.x), 5));
+            //enemyRB.AddForce(new Vector2(5f * (player.position.x - transform.position.x), 5));
+            enemyRB.velocity = new Vector2(2f * moveSpeed * moveDirection, enemyRB.velocity.y);
             enemyAnimator.SetBool("charging", true);
             if (chargeTimer <= -0.5f)
             {

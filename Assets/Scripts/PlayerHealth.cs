@@ -12,10 +12,12 @@ public class PlayerHealth : MonoBehaviour
     public float invincibilityCD;
     private float invincibilityTime;
     private bool canBeDamaged;
+    private float deathTimer;
 
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public Animator animator;
 
     private SpriteRenderer spriteRenderer;
     public float damageIndicatorCD;
@@ -122,7 +124,16 @@ public class PlayerHealth : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(this.gameObject);
+            animator.SetBool("isDead", true);
+            this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            this.gameObject.layer = 8;
+            Destroy(this.gameObject, 1f);
+            deathTimer += Time.deltaTime;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (deathTimer >= 1f)
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
